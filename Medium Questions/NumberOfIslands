@@ -1,0 +1,42 @@
+// https://www.youtube.com/watch?v=pV2kpPD66nE&ab_channel=NeetCode
+// Explination video used -- wrote in a different language and refactored significantly. Just used to understand problem.
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty()) return 0;
+
+        int rows = grid.size();
+        int cols = grid[0].size();
+        int islands = 0;
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (grid[i][j] == '1') {
+                    dfs(grid, i, j);
+                    islands++;
+                }
+            }
+        }
+
+        return islands;
+    }
+
+    void dfs(vector<vector<char>>& grid, int row, int col) {
+        int rows = grid.size();
+        int cols = grid[0].size();
+
+        if (row < 0 || col < 0 || row >= rows || col >= cols || grid[row][col] != '1') {
+            return;
+        }
+
+        // Mark the current cell as visited
+        grid[row][col] = '0';
+
+        // Recursively visit adjacent cells
+        dfs(grid, row + 1, col);
+        dfs(grid, row - 1, col);
+        dfs(grid, row, col + 1);
+        dfs(grid, row, col - 1);
+    }
+};
