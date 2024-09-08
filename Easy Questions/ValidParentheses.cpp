@@ -25,3 +25,28 @@ public:
 
     }
 };
+
+// Another Solution
+class Solution {
+public:
+    bool isClose(char& c){
+        return (c == ')' || c == ']' || c == '}'); 
+    }
+    bool isSame(char& o, char& c) {
+        return((o == '(' && c == ')') ||
+               (o == '{' && c == '}') || 
+               (o == '[' && c == ']')
+            );
+    }
+    bool isValid(string s) {
+        stack<char> par;
+        for(char& c : s){
+            if(isClose(c)){
+                if(par.empty() || !isSame(par.top(), c)) return false;
+                else par.pop();
+            }
+            else par.push(c);
+        }
+        return (par.empty());
+    }
+};
