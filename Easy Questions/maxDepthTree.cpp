@@ -44,3 +44,12 @@ public:
         return (depth1 > depth2) ? depth1 : depth2;
     }
 };
+
+
+// ------------------------------ Best Solution -------------------------------- // 
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        return (!root) ? 0 : (1 + std::max(maxDepth(root->left), maxDepth(root->right)));
+    }
+};
