@@ -19,3 +19,12 @@ public:
     }
     
 };
+
+// One Line Solution -- Just for jokes. Same Code Basically
+
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        return (!p && !q)? true : (!p || !q)? false : (p->val != q->val)? false : isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
+};
