@@ -8,11 +8,8 @@ using namespace std;
 
 int main() {
     int num = 0, sum = 0; 
-    string throwAway;
-    cin >> throwAway;   
     while(cin >> num){
-        cin >> throwAway;
-        sum += stoi(throwAway) + num;
+        sum += num;
     }
     cout << sum;
     
